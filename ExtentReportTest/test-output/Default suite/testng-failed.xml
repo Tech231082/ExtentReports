@@ -3,15 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="FreeCRMTest">
+      <class name="ChatPopUpTest">
         <methods>
-          <include name="getCRMTitleTest"/>
-          <include name="setExtent"/>
-          <include name="setUp"/>
+          <include name="popUpTest"/>
           <include name="tearDown"/>
-          <include name="endReprt"/>
+          <include name="setUp"/>
         </methods>
-      </class> <!-- FreeCRMTest -->
+      </class> <!-- ChatPopUpTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
