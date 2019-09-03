@@ -42,11 +42,11 @@ public class FreeCRMTest {
 		extent.close();
 	}
 	
-	public static  String getScreenShot(WebDriver driver,String screenhotName) throws Exception{
+	public static  String getScreenShot(WebDriver driver,String screenShotName) throws Exception{
 		String dateName=new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
 		TakesScreenshot ts=(TakesScreenshot)driver;
 		File src=ts.getScreenshotAs(OutputType.FILE);
-		String desti=System.getProperty("user.dir")+"/failedTestScreenshots/"+screenhotName+dateName+".png";
+		String desti=System.getProperty("user.dir")+"/failedTestScreenshots/"+screenShotName+dateName+".png";
 		File finaldesti=new File(desti);
 		FileUtils.copyFile(src,finaldesti);
 		return desti;
@@ -80,24 +80,24 @@ public class FreeCRMTest {
 	public void getCRMTitleTest() {
 		logger=extent.startTest("getCRMTitleTest");
 		String title=driver.getTitle();
-		Assert.assertEquals(title, "Free CRM #1 cloud software for any business large or small1");
+		Assert.assertEquals(title, "Free CRM #1 cloud software for any business large or small");
 	}
 	
 	@AfterMethod
 	public void tearDown(ITestResult result) throws Exception {
 		if(result.getStatus()==ITestResult.FAILURE) {
-			logger.log(LogStatus.FAIL, "Test case failed is"+result.getName());
-			logger.log(LogStatus.FAIL, "Test case failed is"+result.getThrowable());
+			logger.log(LogStatus.FAIL, "Test case failed is  "+result.getName());
+			logger.log(LogStatus.FAIL, "Test case failed is  "+result.getThrowable());
 			
 			String screenShotpath=FreeCRMTest.getScreenShot(driver, result.getName());
-			logger.log(LogStatus.FAIL, logger.addScreencast(screenShotpath));
+			//logger.log(LogStatus.FAIL, logger.addScreencast(screenShotpath));
 			logger.log(LogStatus.FAIL, logger.addScreenCapture(screenShotpath));
 		}
 		else if(result.getStatus()==ITestResult.SKIP) {
-			logger.log(LogStatus.SKIP, "Test case got skipped"+result.getName());
+			logger.log(LogStatus.SKIP, "Test case got skipped  "+result.getName());
 		}
 		else if(result.getStatus()==ITestResult.SUCCESS) {
-			logger.log(LogStatus.PASS, "Test case got passed"+result.getName());
+			logger.log(LogStatus.PASS, "Test case got passed     "+result.getName());
 		}
 		extent.endTest(logger);
 		driver.quit();
